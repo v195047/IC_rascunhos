@@ -20,7 +20,7 @@ st.write("""
 
 #imagem 
 
-PATH_TO_IMAGE = '../Imagens/Reator.jpg'
+PATH_TO_IMAGE = 'Imagens/Reator.jpg'
 st.image(PATH_TO_IMAGE, "Figura ilustrativa do reator contínuo de produção de etanol")
 
 #Dados de teste
@@ -100,14 +100,14 @@ axP.set_ylabel("Concentração (g/L)")
 #############
 
 #Scaler
-sc = pickle.load(open("../modelos/scaler.p", "rb"))
-scP = pickle.load(open("../modelos/scalerP.p", "rb"))
-sc3 = pickle.load(open("../modelos/RNNscaler.p", "rb")) #Usado para a RNN
+sc = pickle.load(open("modelos/scaler.p", "rb"))
+scP = pickle.load(open("modelos/scalerP.p", "rb"))
+sc3 = pickle.load(open("modelos/RNNscaler.p", "rb")) #Usado para a RNN
 
 #MODELOS
-ANFIS = pickle.load(open("../modelos/ANFIS.p", "rb"))
-SLFN = keras.models.load_model("../modelos/MLP")
-RNN = keras.models.load_model("../modelos/RNN")
+ANFIS = pickle.load(open("modelos/ANFIS.p", "rb"))
+SLFN = keras.models.load_model("modelos/MLP")
+RNN = keras.models.load_model("modelos/RNN")
 
 PLANTA = series_to_supervised(planta_teste, n_in=1, n_out=1)
 P_mat = PLANTA.iloc[:, -1]

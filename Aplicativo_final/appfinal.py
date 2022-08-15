@@ -7,7 +7,10 @@ from scipy.integrate import odeint
 from tensorflow import keras, Tensor
 from sklearn.metrics import r2_score, max_error
 from sklearn.metrics import mean_squared_error as MSE 
-from auxiliares import * 
+from auxiliares import *
+import sanfis
+from sanfis import SANFIS
+from sanfis import plottingtools
 
 st.write(""" 
     # Modelagem Empírica de um processo de fermentação alcoólica utilizando técnicas de inteligência artificial.

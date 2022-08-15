@@ -100,8 +100,8 @@ axP.set_ylabel("Concentração (g/L)")
 #############
 
 #Scaler
-sc = pickle.load(open("modelos/scaler.p", "rb"))
-scP = pickle.load(open("modelos/scalerP.p", "rb"))
+sc = pickle.load(open("modelos/Scaler.p", "rb"))     #Usado no conjunto completo
+scP = pickle.load(open("modelos/scalerP.p", "rb"))   #Usado para o produto somente
 sc3 = pickle.load(open("modelos/RNNscaler.p", "rb")) #Usado para a RNN
 
 #MODELOS

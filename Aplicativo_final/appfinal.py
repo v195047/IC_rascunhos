@@ -118,7 +118,7 @@ P_mat = PLANTA.iloc[:, -1]
 P = torch.Tensor(PLANTA.iloc[:, -1].values).reshape(-1,1)
 PLANTA_n = sc.transform(PLANTA)
 x_normalizado = torch.Tensor(PLANTA_n[:, :-4])
-x_RNN, _ = converter_dados(sc3.transform(planta_teste), 2)
+x_RNN, _ = converter_dados(sc3.transform(planta_teste), 5)
 
 P_ANFIS = scP.inverse_transform(ANFIS.predict(x_normalizado))
 P_MLP = scP.inverse_transform(SLFN.predict(np.array(x_normalizado)))
@@ -128,16 +128,16 @@ P_RNN = sc3.inverse_transform(RNN.predict(x_RNN))[:, -1]
 axP.plot(tempo[1:], P_mat, label=r"Modelo Matemático", c='k', ls='--')
 axP.plot(tempo[1:], P_ANFIS, label=r"ANFIS", c='orange', ls='-')
 axP.plot(tempo[1:], P_MLP, label=r"MLP", c='r', ls='-')
-axP.plot(tempo[2:], P_RNN, label=r"RNN", c='b', ls='-')
+axP.plot(tempo[5:], P_RNN, label=r"RNN", c='b', ls='-')
 
 axP.legend(loc=4, fontsize=7, ncol=4)
 st.pyplot(fig2)
 ##########################################################
 
 resultados={
-    "MSE":[MSE(P_mat, P_ANFIS), MSE(P_mat, P_MLP), MSE(P_mat[1:], P_RNN)],
-    "R2":[r2_score(P_mat, P_ANFIS), r2_score(P_mat, P_MLP), r2_score(P_mat[1:], P_RNN)],
-    "Erro Max":[max_error(P_mat, P_ANFIS), max_error(P_mat, P_MLP), max_error(P_mat[1:], P_RNN)]
+    "MSE":[MSE(P_mat, P_ANFIS), MSE(P_mat, P_MLP), MSE(P_mat[4:], P_RNN)],
+    "R2":[r2_score(P_mat, P_ANFIS), r2_score(P_mat, P_MLP), r2_score(P_mat[4:], P_RNN)],
+    "Erro Max":[max_error(P_mat, P_ANFIS), max_error(P_mat, P_MLP), max_error(P_mat[4:], P_RNN)]
 }
 
 resultados = pd.DataFrame(resultados, index=["ANFIS", "MLP", "RNN"])

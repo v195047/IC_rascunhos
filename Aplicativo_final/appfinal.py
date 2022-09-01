@@ -130,6 +130,7 @@ axP.plot(tempo[1:], P_ANFIS, label=r"ANFIS", c='orange', ls='-')
 axP.plot(tempo[1:], P_MLP, label=r"MLP", c='r', ls='-')
 axP.plot(tempo[5:], P_RNN, label=r"RNN", c='b', ls='-')
 
+
 axP.legend(loc=4, fontsize=7, ncol=4)
 st.pyplot(fig2)
 ##########################################################
